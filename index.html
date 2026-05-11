@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animal 3D Paper — Aprenda a Criar Animais de Papelão!</title>
+  <meta name="description" content="Aprenda a criar animais incríveis de papelão com o curso Animal 3D Paper do Gabriel Feitosa! Método divertido para crianças e famílias." />
+  <meta property="og:title" content="Animal 3D Paper — Aprenda a Criar Animais de Papelão!" />
+  <meta property="og:description" content="Transforme papelão em animais 3D incríveis! Curso online para crianças e famílias." />
+
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800,900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root, [data-theme="light"] {
+      --color-bg: #fffdf5; --color-surface: #fff9e8; --color-surface-2: #fff4d4;
+      --color-surface-offset: #ffe9b0; --color-divider: #ffd97a;
+      --color-border: oklch(0.85 0.12 85 / 0.25);
+      --color-text: #1e1a0d; --color-text-muted: #6b5e3a;
+      --color-text-faint: #b0a07a; --color-text-inverse: #fffdf5;
+      --color-primary: #1a8a3c; --color-primary-hover: #146e2f; --color-primary-active: #0d5522;
+      --color-orange: #f55f00; --color-orange-hover: #d44f00;
+      --color-yellow: #ffcc00; --color-blue: #1278c9; --color-purple: #7c3fc8; --color-pink: #e8386b;
+      --radius-sm: 0.375rem; --radius-md: 0.75rem; --radius-lg: 1.25rem;
+      --radius-xl: 2rem; --radius-full: 9999px;
+      --shadow-sm: 0 2px 8px oklch(0.3 0.1 60 / 0.10);
+      --shadow-md: 0 6px 20px oklch(0.3 0.1 60 / 0.14);
+      --shadow-lg: 0 16px 48px oklch(0.3 0.1 60 / 0.18);
+      --shadow-cta: 0 8px 32px oklch(0.3 0.14 145 / 0.35);
+      --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+      --space-1:.25rem;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;--space-5:1.25rem;
+      --space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;--space-16:4rem;
+      --space-20:5rem;--space-24:6rem;
+      --text-xs:clamp(0.75rem,0.7rem + 0.25vw,0.875rem);
+      --text-sm:clamp(0.875rem,0.8rem + 0.35vw,1rem);
+      --text-base:clamp(1rem,0.95rem + 0.25vw,1.125rem);
+      --text-lg:clamp(1.125rem,1rem + 0.75vw,1.5rem);
+      --text-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);
+      --text-2xl:clamp(2rem,1.2rem + 2.5vw,3.5rem);
+      --text-hero:clamp(2.8rem,1rem + 6vw,7rem);
+      --font-display:'Fredoka One','Cabinet Grotesk',cursive;
+      --font-body:'Nunito','Cabinet Grotesk',sans-serif;
+      --content-narrow:640px; --content-default:980px; --content-wide:1200px;
+    }
+    [data-theme="dark"] {
+      --color-bg:#181209;--color-surface:#201a0b;--color-surface-2:#2a2210;
+      --color-surface-offset:#332b14;--color-divider:#3d3318;
+      --color-border:oklch(0.8 0.1 80 / 0.18);
+      --color-text:#f5edcc;--color-text-muted:#c5b07a;--color-text-faint:#7a6840;
+      --color-text-inverse:#1e1a0d;--color-primary:#2fcf5e;
+      --color-primary-hover:#24b84e;--color-primary-active:#1a8a3c;
+      --color-orange:#ff8533;--color-orange-hover:#ff6e0f;
+      --shadow-sm:0 2px 8px oklch(0 0 0 / 0.3);
+      --shadow-md:0 6px 20px oklch(0 0 0 / 0.4);
+      --shadow-lg:0 16px 48px oklch(0 0 0 / 0.5);
+      --shadow-cta:0 8px 32px oklch(0.5 0.15 145 / 0.4);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:var(--space-20);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    body{min-height:100dvh;font-family:var(--font-body);font-size:var(--text-base);color:var(--color-text);background-color:var(--color-bg);overflow-x:hidden}
+    img,video{display:block;max-width:100%;height:auto}
+    button{cursor:pointer;font:inherit;border:none;background:none}
+    h1,h2,h3,h4{font-family:var(--font-display);text-wrap:balance;line-height:1.15}
+    p{text-wrap:pretty;line-height:1.7}
+    a{color:inherit;text-decoration:none;transition:color var(--transition-interactive)}
+    ::selection{background:oklch(from var(--color-primary) l c h / 0.25);color:var(--color-text)}
+    :focus-visible{outline:3px solid var(--color-primary);outline-offset:3px;border-radius:var(--radius-sm)}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important;scroll-behavior:auto!important}}
+
+    .skip-link{position:absolute;top:-100%;left:var(--space-4);background:var(--color-primary);color:var(--color-text-inverse);padding:var(--space-2) var(--space-4);border-radius:var(--radius-md);font-weight:700;z-index:9999;transition:top 0.2s}
+    .skip-link:focus{top:var(--space-4)}
+    .container{max-width:var(--content-default);margin-inline:auto;padding-inline:var(--space-5)}
+
+    /* ---- HEADER ---- */
+    .site-header{position:sticky;top:0;z-index:100;background:var(--color-bg);border-bottom:2px solid var(--color-divider);box-shadow:var(--shadow-sm)}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;padding-block:var(--space-3);max-width:var(--content-wide);margin-inline:auto;padding-inline:var(--space-5)}
+    .logo{display:flex;align-items:center;gap:var(--space-2)}
+    .logo-svg{width:44px;height:44px;flex-shrink:0}
+    .logo-text{font-family:var(--font-display);font-size:var(--text-lg);color:var(--color-primary);line-height:1}
+    .logo-text span{color:var(--color-orange)}
+    .header-nav{display:flex;align-items:center;gap:var(--space-3);flex-wrap:wrap}
+    .header-nav a{font-weight:700;font-size:var(--text-sm);color:var(--color-text-muted);padding:var(--space-1) var(--space-2);border-radius:var(--radius-md);transition:color var(--transition-interactive),background var(--transition-interactive)}
+    .header-nav a:hover{color:var(--color-primary);background:oklch(from var(--color-primary) l c h / 0.08)}
+    .btn-cta-small{background:var(--color-orange);color:white;font-weight:800;font-size:var(--text-sm);padding:var(--space-2) var(--space-5);border-radius:var(--radius-full);box-shadow:var(--shadow-sm);transition:background var(--transition-interactive),transform var(--transition-interactive);white-space:nowrap}
+    .btn-cta-small:hover{background:var(--color-orange-hover);transform:translateY(-2px)}
+    .theme-toggle{width:40px;height:40px;border-radius:var(--radius-full);display:flex;align-items:center;justify-content:center;background:var(--color-surface-2);color:var(--color-text-muted);border:1px solid var(--color-border);transition:background var(--transition-interactive),color var(--transition-interactive)}
+    .theme-toggle:hover{background:var(--color-surface-offset);color:var(--color-text)}
+
+    /* ---- HERO ---- */
+    .hero{position:relative;background:linear-gradient(135deg in oklab,oklch(0.97 0.08 100) 0%,oklch(0.95 0.12 120) 30%,oklch(0.90 0.15 150) 70%,oklch(0.88 0.18 170) 100%);overflow:hidden;padding-block:clamp(var(--space-16),10vw,var(--space-24))}
+    [data-theme="dark"] .hero{background:linear-gradient(135deg in oklab,oklch(0.20 0.06 100) 0%,oklch(0.18 0.10 120) 40%,oklch(0.16 0.12 150) 100%)}
+    .hero-paws{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+    .paw{position:absolute;font-size:2rem;opacity:0.12;animation:floatPaw 8s ease-in-out infinite}
+    .paw:nth-child(1){left:5%;top:15%;animation-delay:0s;font-size:2.5rem}
+    .paw:nth-child(2){left:18%;top:70%;animation-delay:1.2s}
+    .paw:nth-child(3){left:32%;top:10%;animation-delay:2.5s;font-size:1.5rem}
+    .paw:nth-child(4){left:50%;top:80%;animation-delay:0.8s;font-size:3rem}
+    .paw:nth-child(5){left:65%;top:20%;animation-delay:3s}
+    .paw:nth-child(6){left:80%;top:60%;animation-delay:1.8s;font-size:1.8rem}
+    .paw:nth-child(7){left:90%;top:10%;animation-delay:0.5s;font-size:2.2rem}
+    .paw:nth-child(8){left:75%;top:85%;animation-delay:2.2s;font-size:1.6rem}
+    @keyframes floatPaw{0%,100%{transform:translateY(0) rotate(-10deg)}50%{transform:translateY(-18px) rotate(8deg)}}
+    .hero-content{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:var(--space-12);max-width:var(--content-wide);margin-inline:auto;padding-inline:var(--space-5)}
+    @media(max-width:768px){.hero-content{grid-template-columns:1fr;text-align:center}.hero-badge,.hero-cta-group{justify-content:center}}
+    .hero-badge{display:inline-flex;align-items:center;gap:var(--space-2);background:var(--color-yellow);color:var(--color-text);font-weight:800;font-size:var(--text-sm);padding:var(--space-1) var(--space-4);border-radius:var(--radius-full);box-shadow:var(--shadow-sm);margin-bottom:var(--space-5)}
+    .hero-title{font-size:var(--text-hero);color:var(--color-primary);line-height:1.05;margin-bottom:var(--space-5);text-shadow:3px 3px 0 oklch(from var(--color-primary) l c h / 0.15)}
+    .hero-title span{color:var(--color-orange)}
+    .hero-desc{font-size:var(--text-lg);color:var(--color-text-muted);max-width:50ch;margin-bottom:var(--space-8)}
+    @media(max-width:768px){.hero-desc{margin-inline:auto}}
+    .hero-cta-group{display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center}
+    .btn-hero{display:inline-flex;align-items:center;gap:var(--space-2);background:var(--color-primary);color:white;font-family:var(--font-display);font-size:var(--text-lg);padding:var(--space-4) var(--space-8);border-radius:var(--radius-full);box-shadow:var(--shadow-cta);transition:background var(--transition-interactive),transform var(--transition-interactive),box-shadow var(--transition-interactive);white-space:nowrap}
+    .btn-hero:hover{background:var(--color-primary-hover);transform:translateY(-3px) scale(1.02)}
+    .btn-hero:active{transform:translateY(0) scale(1)}
+    .btn-hero.btn-orange{background:var(--color-orange);box-shadow:0 8px 28px oklch(from var(--color-orange) l c h / 0.4)}
+    .btn-hero.btn-orange:hover{background:var(--color-orange-hover)}
+    .hero-visual{display:flex;align-items:center;justify-content:center;position:relative}
+    .hero-card{background:white;border-radius:var(--radius-xl);padding:var(--space-4);box-shadow:var(--shadow-lg);transform:rotate(2deg);transition:transform var(--transition-interactive);max-width:420px;width:100%}
+    .hero-card:hover{transform:rotate(0deg) scale(1.02)}
+    .hero-card-caption{font-family:var(--font-display);font-size:var(--text-base);color:var(--color-text-muted);text-align:center;margin-top:var(--space-3)}
+    .hero-star{position:absolute;font-size:2.5rem;animation:spinStar 4s linear infinite;pointer-events:none}
+    .hero-star:nth-child(1){top:-8%;right:-5%}
+    .hero-star:nth-child(2){bottom:-8%;left:-5%;animation-direction:reverse;font-size:2rem}
+    @keyframes spinStar{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+    /* ---- YOUTUBE LITE EMBED (thumbnail clicável → abre player) ---- */
+    .yt-lite {
+      position: relative;
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .yt-lite img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      border-radius: 0;
+    }
+    .yt-lite:hover img { transform: scale(1.04); opacity: 0.85; }
+    .yt-lite .play-btn {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 68px; height: 48px;
+      background: #ff0000;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      transition: transform 0.2s ease, background 0.2s ease;
+      z-index: 2;
+    }
+    .yt-lite:hover .play-btn { transform: translate(-50%, -50%) scale(1.12); background: #cc0000; }
+    .yt-lite .play-btn svg { width: 28px; height: 28px; fill: white; }
+    .yt-lite .yt-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.75));
+      color: white; font-weight: 700; font-size: var(--text-xs);
+      padding: var(--space-6) var(--space-3) var(--space-2);
+      text-align: left;
+    }
+    /* when activated, replace with real iframe */
+    .yt-lite.activated {
+      cursor: default;
+    }
+    .yt-lite.activated img,
+    .yt-lite.activated .play-btn,
+    .yt-lite.activated .yt-label { display: none; }
+    .yt-lite.activated iframe {
+      display: block;
+      position: absolute;
+      inset: 0; width: 100%; height: 100%;
+      border: none;
+    }
+    .yt-lite iframe { display: none; }
+
+    /* ---- SECTION HEADER ---- */
+    .section-header{text-align:center;margin-bottom:clamp(var(--space-10),4vw,var(--space-16))}
+    .section-label{display:inline-block;background:oklch(from var(--color-primary) l c h / 0.12);color:var(--color-primary);font-weight:800;font-size:var(--text-xs);text-transform:uppercase;letter-spacing:0.12em;padding:var(--space-1) var(--space-4);border-radius:var(--radius-full);margin-bottom:var(--space-3)}
+    .section-title{font-size:var(--text-2xl);color:var(--color-text);margin-bottom:var(--space-4)}
+    .section-desc{font-size:var(--text-base);color:var(--color-text-muted);max-width:55ch;margin-inline:auto}
+
+    /* ---- WAVE ---- */
+    .wave-divider{line-height:0;overflow:hidden;display:block}
+    .wave-divider svg{display:block;width:100%}
+
+    /* ---- ABOUT ---- */
+    .about-section{background:var(--color-surface);padding-block:clamp(var(--space-12),8vw,var(--space-20))}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-12);align-items:center}
+    @media(max-width:768px){.about-grid{grid-template-columns:1fr}}
+    .about-video-wrap{position:relative;border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-lg);transform:rotate(-1.5deg);transition:transform var(--transition-interactive)}
+    .about-video-wrap:hover{transform:rotate(0deg) scale(1.01)}
+    .about-text p{color:var(--color-text-muted);font-size:var(--text-base);margin-bottom:var(--space-4)}
+    .about-perks{list-style:none;display:flex;flex-direction:column;gap:var(--space-3)}
+    .about-perks li{display:flex;align-items:flex-start;gap:var(--space-3);font-weight:600}
+    .perk-icon{width:36px;height:36px;border-radius:var(--radius-full);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+
+    /* ---- VIDEOS ---- */
+    .videos-section{padding-block:clamp(var(--space-12),8vw,var(--space-20));background:var(--color-bg)}
+    .videos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:var(--space-6)}
+    .video-card{background:var(--color-surface);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-sm);border:2px solid var(--color-divider);transition:transform var(--transition-interactive),box-shadow var(--transition-interactive)}
+    .video-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md)}
+    .video-card-body{padding:var(--space-4) var(--space-5)}
+    .video-card-emoji{font-size:1.4rem;margin-bottom:var(--space-1)}
+    .video-card-title{font-family:var(--font-display);font-size:var(--text-base);color:var(--color-text);margin-bottom:var(--space-1)}
+    .video-card-desc{font-size:var(--text-sm);color:var(--color-text-muted)}
+
+    /* ---- HOW IT WORKS ---- */
+    .how-section{background:linear-gradient(180deg in oklab,var(--color-surface) 0%,var(--color-surface-2) 100%);padding-block:clamp(var(--space-12),8vw,var(--space-20))}
+    .steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:var(--space-6);counter-reset:step-counter}
+    .step-card{background:var(--color-bg);border-radius:var(--radius-xl);padding:var(--space-8) var(--space-6);text-align:center;box-shadow:var(--shadow-sm);border:2px solid var(--color-divider);counter-increment:step-counter;position:relative;transition:transform var(--transition-interactive),box-shadow var(--transition-interactive)}
+    .step-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+    .step-number{position:absolute;top:-16px;left:50%;transform:translateX(-50%);background:var(--color-primary);color:white;font-family:var(--font-display);font-size:var(--text-lg);width:44px;height:44px;border-radius:var(--radius-full);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px oklch(from var(--color-primary) l c h / 0.4)}
+    .step-icon{font-size:3rem;margin-bottom:var(--space-4);margin-top:var(--space-2);display:block}
+    .step-title{font-size:var(--text-base);margin-bottom:var(--space-2)}
+    .step-desc{font-size:var(--text-sm);color:var(--color-text-muted)}
+
+    /* ---- ANIMALS TICKER ---- */
+    .animals-section{padding-block:clamp(var(--space-12),8vw,var(--space-20));background:var(--color-bg);overflow:hidden}
+    .animals-ticker-wrap{overflow:hidden;margin-top:var(--space-8)}
+    .animals-ticker{display:flex;gap:var(--space-4);animation:ticker 22s linear infinite;width:max-content}
+    .animals-ticker:hover{animation-play-state:paused}
+    @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .animal-chip{display:flex;align-items:center;gap:var(--space-2);background:var(--color-surface);border:2px solid var(--color-divider);border-radius:var(--radius-full);padding:var(--space-2) var(--space-5);font-family:var(--font-display);font-size:var(--text-base);white-space:nowrap;box-shadow:var(--shadow-sm);transition:transform var(--transition-interactive);flex-shrink:0}
+    .animal-chip:hover{transform:scale(1.07)}
+
+    /* ---- TESTIMONIALS ---- */
+    .testimonials-section{background:var(--color-surface-2);padding-block:clamp(var(--space-12),8vw,var(--space-20))}
+    .testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:var(--space-6)}
+    .testimonial-card{background:var(--color-bg);border-radius:var(--radius-xl);padding:var(--space-6);box-shadow:var(--shadow-sm);border:2px solid var(--color-divider);transition:transform var(--transition-interactive),box-shadow var(--transition-interactive)}
+    .testimonial-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+    .testimonial-stars{font-size:1.2rem;margin-bottom:var(--space-3)}
+    .testimonial-text{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.7;margin-bottom:var(--space-4);font-style:italic}
+    .testimonial-author{display:flex;align-items:center;gap:var(--space-3)}
+    .testimonial-avatar{width:44px;height:44px;border-radius:var(--radius-full);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
+    .testimonial-name{font-weight:800;font-size:var(--text-sm)}
+    .testimonial-role{font-size:var(--text-xs);color:var(--color-text-faint)}
+
+    /* ---- CTA FINAL ---- */
+    .cta-section{position:relative;background:linear-gradient(135deg in oklab,oklch(0.30 0.15 145) 0%,oklch(0.22 0.18 165) 50%,oklch(0.25 0.20 185) 100%);padding-block:clamp(var(--space-16),10vw,var(--space-24));overflow:hidden;text-align:center}
+    [data-theme="dark"] .cta-section{background:linear-gradient(135deg in oklab,oklch(0.18 0.14 145) 0%,oklch(0.14 0.16 165) 100%)}
+    .cta-animals-bg{position:absolute;inset:0;font-size:4rem;display:flex;flex-wrap:wrap;gap:2rem;padding:1rem;opacity:0.07;pointer-events:none;animation:rotateBg 30s linear infinite}
+    @keyframes rotateBg{from{transform:rotate(0deg) scale(1.1)}to{transform:rotate(360deg) scale(1.1)}}
+    .cta-content{position:relative;z-index:2;max-width:var(--content-narrow);margin-inline:auto;padding-inline:var(--space-5)}
+    .cta-badge{display:inline-block;background:var(--color-yellow);color:var(--color-text);font-weight:800;font-size:var(--text-xs);text-transform:uppercase;letter-spacing:0.1em;padding:var(--space-1) var(--space-4);border-radius:var(--radius-full);margin-bottom:var(--space-5)}
+    .cta-title{font-size:var(--text-2xl);color:white;margin-bottom:var(--space-4);text-shadow:0 4px 16px oklch(0 0 0 / 0.4)}
+    .cta-desc{font-size:var(--text-base);color:oklch(1 0 0 / 0.85);max-width:45ch;margin-inline:auto;margin-bottom:var(--space-8)}
+    .btn-buy{display:inline-flex;align-items:center;gap:var(--space-3);background:var(--color-yellow);color:var(--color-text);font-family:var(--font-display);font-size:var(--text-xl);padding:var(--space-5) var(--space-12);border-radius:var(--radius-full);box-shadow:0 8px 40px oklch(0.85 0.18 90 / 0.5);transition:background var(--transition-interactive),transform var(--transition-interactive),box-shadow var(--transition-interactive);animation:pulse 2s ease-in-out infinite}
+    @keyframes pulse{0%,100%{box-shadow:0 8px 40px oklch(0.85 0.18 90 / 0.5)}50%{box-shadow:0 12px 56px oklch(0.85 0.18 90 / 0.7)}}
+    .btn-buy:hover{background:#ffe000;transform:translateY(-4px) scale(1.04);animation:none}
+    .btn-buy:active{transform:translateY(0) scale(1)}
+    .cta-guarantee{margin-top:var(--space-4);font-size:var(--text-xs);color:oklch(1 0 0 / 0.65);display:flex;align-items:center;justify-content:center;gap:var(--space-2)}
+
+    /* ---- FOOTER ---- */
+    .site-footer{background:var(--color-surface-2);border-top:2px solid var(--color-divider);padding-block:var(--space-10);text-align:center}
+    .footer-logo-text{font-family:var(--font-display);font-size:var(--text-xl);color:var(--color-primary);margin-bottom:var(--space-3)}
+    .footer-logo-text span{color:var(--color-orange)}
+    .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--space-5);margin-bottom:var(--space-4)}
+    .footer-links a{font-size:var(--text-sm);color:var(--color-text-muted);font-weight:600;transition:color var(--transition-interactive)}
+    .footer-links a:hover{color:var(--color-primary)}
+    .footer-copy{font-size:var(--text-xs);color:var(--color-text-faint)}
+
+    /* ---- SCROLL REVEAL ---- */
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Ir para o conteúdo</a>
+
+  <!-- HEADER -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="#" class="logo" aria-label="Animal 3D Paper — página inicial">
+        <svg class="logo-svg" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+          <rect width="44" height="44" rx="12" fill="#1a8a3c"/>
+          <circle cx="22" cy="24" r="8" fill="white" opacity="0.95"/>
+          <circle cx="14" cy="16" r="4" fill="white" opacity="0.9"/>
+          <circle cx="30" cy="16" r="4" fill="white" opacity="0.9"/>
+          <circle cx="22" cy="12" r="3" fill="white" opacity="0.9"/>
+          <circle cx="22" cy="24" r="4" fill="#1a8a3c"/>
+          <circle cx="17" cy="22" r="2.5" fill="#1a8a3c"/>
+          <circle cx="27" cy="22" r="2.5" fill="#1a8a3c"/>
+          <circle cx="22" cy="29" r="2.5" fill="#1a8a3c"/>
+        </svg>
+        <span class="logo-text">Animal <span>3D</span> Paper</span>
+      </a>
+      <nav class="header-nav" aria-label="Navegação principal">
+        <a href="#videos">Vídeos</a>
+        <a href="#como-funciona">Como Funciona</a>
+        <a href="https://pay.hotmart.com/K78539056M" class="btn-cta-small" target="_blank" rel="noopener noreferrer">🎓 Comprar Curso</a>
+        <button class="theme-toggle" data-theme-toggle aria-label="Alternar tema">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-paws" aria-hidden="true">
+        <span class="paw">🐾</span><span class="paw">🦁</span><span class="paw">🐾</span>
+        <span class="paw">🦕</span><span class="paw">🐾</span><span class="paw">🦜</span>
+        <span class="paw">🐾</span><span class="paw">🦥</span>
+      </div>
+      <div class="hero-content">
+        <div>
+          <div class="hero-badge">🌟 Curso Online para Crianças</div>
+          <h1 class="hero-title" id="hero-title">Crie<br><span>Animais</span><br>de Papelão!</h1>
+          <p class="hero-desc">Aprenda a transformar papelão reciclável em incríveis esculturas 3D de animais — do jabuti ao dinossauro! Diversão, arte e criatividade para toda a família. 🎨</p>
+          <div class="hero-cta-group">
+            <a href="https://pay.hotmart.com/K78539056M" class="btn-hero btn-orange" target="_blank" rel="noopener noreferrer">🎓 Quero o Curso!</a>
+            <a href="#videos" class="btn-hero" style="background:oklch(from var(--color-primary) l c h / 0.15);color:var(--color-primary);box-shadow:none;">📺 Ver Vídeos</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-star" aria-hidden="true">⭐</div>
+          <div class="hero-star" aria-hidden="true">🌟</div>
+          <div class="hero-card">
+            <!-- YouTube lite embed — clique abre o player -->
+            <div class="yt-lite" data-videoid="nz8UVvPL8uE" role="button" tabindex="0" aria-label="Assistir: Bicho-preguiça de papelão e lã">
+              <img src="https://i.ytimg.com/vi/nz8UVvPL8uE/hqdefault.jpg" alt="Bicho-preguiça de papelão e lã — Gabriel Feitosa" width="480" height="270" loading="lazy" />
+              <div class="play-btn" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+              <div class="yt-label">🦥 Bicho-preguiça de papelão e lã</div>
+              <iframe title="Bicho-preguiça de papelão e lã"></iframe>
+            </div>
+            <p class="hero-card-caption">🦥 Clique para assistir no YouTube!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wave-divider" aria-hidden="true"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="var(--color-surface)"/></svg></div>
+
+    <!-- ===================== ABOUT ===================== -->
+    <section class="about-section" aria-labelledby="about-title">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-video-wrap reveal">
+            <div class="yt-lite" data-videoid="rsarPcM4SRA" role="button" tabindex="0" aria-label="Assistir: King Kong de lã e papelão">
+              <img src="https://i.ytimg.com/vi/rsarPcM4SRA/hqdefault.jpg" alt="King Kong de lã e papelão" width="480" height="270" loading="lazy" />
+              <div class="play-btn" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+              <div class="yt-label">🦍 King Kong de lã e papelão</div>
+              <iframe title="King Kong de lã e papelão"></iframe>
+            </div>
+          </div>
+          <div class="about-text reveal">
+            <p class="section-label">Sobre o Criador</p>
+            <h2 id="about-title" style="font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:var(--space-4);">Conheça o Gabriel Feitosa! 👋</h2>
+            <p>Gabriel é um artista brasileiro apaixonado por animais e reciclagem. Ele transforma simples folhas de papelão em esculturas 3D incríveis — cobertas de lã, tecido e tinta aquarela!</p>
+            <p>No canal <strong>Gabriel Feitosa Arte Reciclável</strong> você encontra tutoriais passo a passo de dezenas de animais, de filhotes fofos a dinossauros gigantes.</p>
+            <ul class="about-perks">
+              <li><span class="perk-icon" style="background:oklch(from var(--color-primary) l c h / 0.12);color:var(--color-primary);">♻️</span><span>Usa papelão reciclado — protege o planeta!</span></li>
+              <li><span class="perk-icon" style="background:oklch(from var(--color-orange) l c h / 0.12);color:var(--color-orange);">🎨</span><span>Técnica artesanal simples para qualquer idade</span></li>
+              <li><span class="perk-icon" style="background:oklch(from var(--color-blue) l c h / 0.12);color:var(--color-blue);">🦁</span><span>Mais de 50 animais ensinados no canal</span></li>
+              <li><span class="perk-icon" style="background:oklch(from var(--color-yellow) l c h / 0.25);color:#7a5c00;">⭐</span><span>Curso completo disponível na Hotmart</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wave-divider" aria-hidden="true"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C360,0 1080,60 1440,30 L1440,0 L0,0 Z" fill="var(--color-surface)"/></svg></div>
+
+    <!-- ===================== VIDEOS ===================== -->
+    <section class="videos-section" id="videos" aria-labelledby="videos-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">📺 Vídeos do Canal</span>
+          <h2 class="section-title" id="videos-title">Veja Antes de Comprar!</h2>
+          <p class="section-desc">Clique nos vídeos e descubra o quanto é divertido criar animais de papelão.</p>
+        </div>
+        <div class="videos-grid">
+
+          <article class="video-card reveal">
+            <div class="yt-lite" data-videoid="Ot_b3SFifAY" role="button" tabindex="0" aria-label="Assistir: Como fazer artesanato de jabuti">
+              <img src="https://i.ytimg.com/vi/Ot_b3SFifAY/hqdefault.jpg" alt="Como fazer jabuti de papel" width="320" height="180" loading="lazy" />
+              <div class="play-btn" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+              <iframe title="Como fazer artesanato de jabuti"></iframe>
+            </div>
+            <div class="video-card-body">
+              <div class="video-card-emoji">🐢</div>
+              <h3 class="video-card-title">Jabuti de Papel</h3>
+              <p class="video-card-desc">Aprenda a fazer um jabuti usando só folhas de papel e cola branca!</p>
+            </div>
+          </article>
+
+          <article class="video-card reveal">
+            <div class="yt-lite" data-videoid="vyQx9RTJ5PI" role="button" tabindex="0" aria-label="Assistir: Como fazer coruja de papelão">
+              <img src="https://i.ytimg.com/vi/vyQx9RTJ5PI/hqdefault.jpg" alt="Como fazer coruja de papelão" width="320" height="180" loading="lazy" />
+              <div class="play-btn" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+              <iframe title="Como fazer coruja de papelão"></iframe>
+            </div>
+            <div class="video-card-body">
+              <div class="video-card-emoji">🦉</div>
+              <h3 class="video-card-title">Coruja Suindara</h3>
+              <p class="video-card-desc">A coruja brasileira ganha vida em papelão com asas incríveis!</p>
+            </div>
+          </article>
+
+          <article class="video-card reveal">
+            <div class="yt-lite" data-videoid="3KJVQD5kUzw" role="button" tabindex="0" aria-label="Assistir: Como fazer canguru de papelão">
+              <img src="https://i.ytimg.com/vi/3KJVQD5kUzw/hqdefault.jpg" alt="Como fazer canguru de papelão" width="320" height="180" loading="lazy" />
+              <div class="play-btn" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+              <iframe title="Como fazer canguru de papelão"></iframe>
+            </div>
+            <div class="video-card-body">
+              <div class="video-card-emoji">🦘</div>
+              <h3 class="video-card-title">Canguru com Filhote</h3>
+              <p class="video-card-desc">Canguru vermelho com filhotinho na bolsa — articulado e fofíssimo!</p>
+            </div>
+          </article>
+
+          <article class="video-card reveal">
+            <div class="yt-lite" data-videoid="VVVophXtBMg" role="button" tabindex="0" aria-label="Assistir: Como fazer iguana de papelão">
+              <img src="https://i.ytimg.com/vi/VVVophXtBMg/hqdefault.jpg" alt="Como fazer iguana de papelão" width="320" height="180" loading="lazy" />
+              <div class="play-btn" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+              <iframe title="Como fazer iguana de papelão"></iframe>
+            </div>
+            <div class="video-card-body">
+              <div class="video-card-emoji">🦎</div>
+              <h3 class="video-card-title">Iguana Verde</h3>
+              <p class="video-card-desc">Réptil brasileiro cheio de detalhes, com garras e escamas de papel.</p>
+            </div>
+          </article>
+
+          <article class="video-card reveal">
+            <div class="yt-lite" data-videoid="GJRnA2Vzb38" role="button" tabindex="0" aria-label="Assistir: Como fazer alossauro de papelão">
+              <img src="https://i.ytimg.com/vi/GJRnA2Vzb38/hqdefault.jpg" alt="Como fazer alossauro de papelão" width="320" height="180" loading="lazy" />
+              <div class="play-btn" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+              <iframe title="Como fazer alossauro de papelão"></iframe>
+            </div>
+            <div class="video-card-body">
+              <div class="video-card-emoji">🦕</div>
+              <h3 class="video-card-title">Alossauro Jurássico</h3>
+              <p class="video-card-desc">Dinossauro assustador do Jurassic World feito de papelão!</p>
+            </div>
+          </article>
+
+          <article class="video-card reveal">
+            <div class="yt-lite" data-videoid="OlLiypeLF0U" role="button" tabindex="0" aria-label="Assistir: Animais da Megafauna">
+              <img src="https://i.ytimg.com/vi/OlLiypeLF0U/hqdefault.jpg" alt="Animais da Megafauna" width="320" height="180" loading="lazy" />
+              <div class="play-btn" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+              <iframe title="Animais da Megafauna"></iframe>
+            </div>
+            <div class="video-card-body">
+              <div class="video-card-emoji">🦣</div>
+              <h3 class="video-card-title">Animais da Megafauna</h3>
+              <p class="video-card-desc">Criaturas pré-históricas incríveis reunidas num só vídeo!</p>
+            </div>
+          </article>
+
+        </div>
+        <div style="text-align:center;margin-top:var(--space-10);">
+          <a href="https://www.youtube.com/@gabrielfeitosaartereciclav5313" class="btn-hero" target="_blank" rel="noopener noreferrer">📺 Ver Todos os Vídeos no YouTube</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ANIMALS TICKER ===================== -->
+    <section class="animals-section" aria-label="Animais que você vai aprender a fazer">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">🐾 O Que Você Vai Criar</span>
+          <h2 class="section-title">Dezenas de Animais para Fazer!</h2>
+          <p class="section-desc">Do jabuti ao T-Rex, do canguru à preguiça — sua coleção vai crescer sem parar!</p>
+        </div>
+      </div>
+      <div class="animals-ticker-wrap" aria-hidden="true">
+        <div class="animals-ticker">
+          <span class="animal-chip">🐢 Jabuti</span><span class="animal-chip">🦉 Coruja</span><span class="animal-chip">🦘 Canguru</span><span class="animal-chip">🦎 Iguana</span><span class="animal-chip">🦁 Leão</span><span class="animal-chip">🦕 Dinossauro</span><span class="animal-chip">🦥 Preguiça</span><span class="animal-chip">🦍 Gorila</span><span class="animal-chip">🐒 Macaco-Prego</span><span class="animal-chip">🦜 Quetzalcoatlus</span><span class="animal-chip">🦣 Mamute</span><span class="animal-chip">🐕 Labrador</span><span class="animal-chip">🦸 King Kong</span><span class="animal-chip">🐴 Mula</span><span class="animal-chip">🦺 Suricato</span>
+          <span class="animal-chip">🐢 Jabuti</span><span class="animal-chip">🦉 Coruja</span><span class="animal-chip">🦘 Canguru</span><span class="animal-chip">🦎 Iguana</span><span class="animal-chip">🦁 Leão</span><span class="animal-chip">🦕 Dinossauro</span><span class="animal-chip">🦥 Preguiça</span><span class="animal-chip">🦍 Gorila</span><span class="animal-chip">🐒 Macaco-Prego</span><span class="animal-chip">🦜 Quetzalcoatlus</span><span class="animal-chip">🦣 Mamute</span><span class="animal-chip">🐕 Labrador</span><span class="animal-chip">🦸 King Kong</span><span class="animal-chip">🐴 Mula</span><span class="animal-chip">🦺 Suricato</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== HOW IT WORKS ===================== -->
+    <section class="how-section" id="como-funciona" aria-labelledby="how-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">🛠️ Como Funciona</span>
+          <h2 class="section-title" id="how-title">Simples e Divertido!</h2>
+          <p class="section-desc">Em apenas 4 passos você cria um animal incrível de papelão.</p>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card reveal"><div class="step-number">1</div><span class="step-icon">📦</span><h3 class="step-title">Pegue o Papelão</h3><p class="step-desc">Reaproveite caixas de papelão em casa — sem gastar nada!</p></div>
+          <div class="step-card reveal"><div class="step-number">2</div><span class="step-icon">✂️</span><h3 class="step-title">Recorte e Monte</h3><p class="step-desc">Siga o passo a passo do curso e recorte as peças do seu animal.</p></div>
+          <div class="step-card reveal"><div class="step-number">3</div><span class="step-icon">🖌️</span><h3 class="step-title">Pinte e Decore</h3><p class="step-desc">Use tinta aquarela, lã e cola para dar vida e textura ao animal.</p></div>
+          <div class="step-card reveal"><div class="step-number">4</div><span class="step-icon">🏆</span><h3 class="step-title">Mostre para Todos!</h3><p class="step-desc">Seu animal está pronto! Monte sua coleção e impressione a galera!</p></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wave-divider" aria-hidden="true"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,0 C360,60 1080,0 1440,0 L1440,60 L0,60 Z" fill="var(--color-surface-2)"/></svg></div>
+
+    <!-- ===================== TESTIMONIALS ===================== -->
+    <section class="testimonials-section" aria-labelledby="testimonials-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">💬 O Que Dizem</span>
+          <h2 class="section-title" id="testimonials-title">Crianças que já criaram!</h2>
+          <p class="section-desc">Veja o que as famílias dizem sobre o método do Gabriel.</p>
+        </div>
+        <div class="testimonials-grid">
+          <div class="testimonial-card reveal">
+            <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-text">"Minha filha de 8 anos fez o canguru sozinha depois de assistir ao vídeo. Ela ficou tão orgulhosa que já quer montar uma coleção inteira!"</p>
+            <div class="testimonial-author"><div class="testimonial-avatar" style="background:oklch(from var(--color-pink) l c h / 0.15);">👩</div><div><div class="testimonial-name">Ana Claudia</div><div class="testimonial-role">Mãe da Beatriz, 8 anos</div></div></div>
+          </div>
+          <div class="testimonial-card reveal">
+            <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-text">"Meu filho de 10 anos passou o fim de semana fazendo dinossauros. Gastamos só caixas de papelão que íamos jogar fora. Arte e reciclagem juntos!"</p>
+            <div class="testimonial-author"><div class="testimonial-avatar" style="background:oklch(from var(--color-blue) l c h / 0.15);">👨</div><div><div class="testimonial-name">Rodrigo Mendes</div><div class="testimonial-role">Pai do Lucas, 10 anos</div></div></div>
+          </div>
+          <div class="testimonial-card reveal">
+            <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-text">"Uso o método do Gabriel nas minhas aulas de arte. As crianças adoram! É super acessível, criativo e ensina sobre sustentabilidade também."</p>
+            <div class="testimonial-author"><div class="testimonial-avatar" style="background:oklch(from var(--color-primary) l c h / 0.15);">👩‍🏫</div><div><div class="testimonial-name">Profª Juliana</div><div class="testimonial-role">Professora de Artes — Fortaleza</div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wave-divider" aria-hidden="true"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,60 C360,0 1080,60 1440,60 L1440,0 L0,0 Z" fill="var(--color-surface-2)"/></svg></div>
+
+    <!-- ===================== CTA FINAL ===================== -->
+    <section class="cta-section" id="curso" aria-labelledby="cta-title">
+      <div class="cta-animals-bg" aria-hidden="true">🐾🦁🦕🐢🦉🦘🦎🦥🦍🦣🐕🌿🌟🎨♻️🐾🦁🦕🐢🦉🦘🦎🦥🦍🦣🐕🌿🌟🎨♻️</div>
+      <div class="cta-content">
+        <div class="cta-badge">🎓 Curso Completo Online</div>
+        <h2 class="cta-title" id="cta-title">Comece a Criar Seus Animais Hoje! 🎉</h2>
+        <p class="cta-desc">No curso <strong>Animal 3D Paper</strong> você aprende passo a passo a criar dezenas de animais incríveis com papelão reciclado. Método simples, materiais baratos, resultado incrível!</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:var(--space-3);margin-bottom:var(--space-8);text-align:left;max-width:38ch;margin-inline:auto;">
+          <li style="color:white;font-weight:700;display:flex;gap:var(--space-2);align-items:center;"><span style="color:var(--color-yellow);font-size:1.2rem;">✅</span> Vídeo-aulas em português</li>
+          <li style="color:white;font-weight:700;display:flex;gap:var(--space-2);align-items:center;"><span style="color:var(--color-yellow);font-size:1.2rem;">✅</span> Acesso vitalício ao conteúdo</li>
+          <li style="color:white;font-weight:700;display:flex;gap:var(--space-2);align-items:center;"><span style="color:var(--color-yellow);font-size:1.2rem;">✅</span> Suporte no grupo do WhatsApp</li>
+          <li style="color:white;font-weight:700;display:flex;gap:var(--space-2);align-items:center;"><span style="color:var(--color-yellow);font-size:1.2rem;">✅</span> Materiais simples e acessíveis</li>
+          <li style="color:white;font-weight:700;display:flex;gap:var(--space-2);align-items:center;"><span style="color:var(--color-yellow);font-size:1.2rem;">✅</span> Ideal para crianças e adultos</li>
+        </ul>
+        <a href="https://pay.hotmart.com/K78539056M" class="btn-buy" target="_blank" rel="noopener noreferrer" aria-label="Comprar curso Animal 3D Paper na Hotmart">🛒 Quero Comprar Agora!</a>
+        <p class="cta-guarantee">🔒 Compra segura pela Hotmart &nbsp;·&nbsp; 7 dias de garantia</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-logo-text">Animal <span>3D</span> Paper 🐾</div>
+      <nav class="footer-links" aria-label="Links do rodapé">
+        <a href="https://www.instagram.com/3danimalpaper/" target="_blank" rel="noopener noreferrer">📸 Instagram</a>
+        <a href="https://www.youtube.com/@gabrielfeitosaartereciclav5313" target="_blank" rel="noopener noreferrer">📺 YouTube</a>
+        <a href="https://pay.hotmart.com/K78539056M" target="_blank" rel="noopener noreferrer">🎓 Curso na Hotmart</a>
+      </nav>
+      <p class="footer-copy">© 2026 Gabriel Feitosa Gonçalves — Animal 3D Paper. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    /* ---- Theme toggle ---- */
+    (function(){
+      const t=document.querySelector('[data-theme-toggle]'),r=document.documentElement;
+      let d=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';
+      r.setAttribute('data-theme',d);
+      const moon='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+      const sun='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
+      if(t){t.innerHTML=d==='dark'?sun:moon;t.addEventListener('click',()=>{d=d==='dark'?'light':'dark';r.setAttribute('data-theme',d);t.innerHTML=d==='dark'?sun:moon;})}
+    })();
+
+    /* ---- YouTube Lite Embed ---- */
+    (function(){
+      document.querySelectorAll('.yt-lite').forEach(function(el){
+        function activate(){
+          if(el.classList.contains('activated')) return;
+          var vid = el.dataset.videoid;
+          var iframe = el.querySelector('iframe');
+          iframe.src = 'https://www.youtube-nocookie.com/embed/' + vid + '?autoplay=1&rel=0';
+          el.classList.add('activated');
+        }
+        el.addEventListener('click', activate);
+        el.addEventListener('keydown', function(e){
+          if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); activate(); }
+        });
+      });
+    })();
+
+    /* ---- Scroll reveal ---- */
+    (function(){
+      var els=document.querySelectorAll('.reveal');
+      var obs=new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            var siblings=Array.from(entry.target.parentElement.querySelectorAll('.reveal'));
+            var idx=siblings.indexOf(entry.target);
+            setTimeout(function(){entry.target.classList.add('visible');},idx*80);
+            obs.unobserve(entry.target);
+          }
+        });
+      },{threshold:0.12});
+      els.forEach(function(el){obs.observe(el);});
+    })();
+  </script>
+</body>
+</html>
